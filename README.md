@@ -3,11 +3,11 @@ General statistics utilities by using Java Stream
 
 **This repository contains these files:**
 
-- **ListSummary.java:** This class is instantiated by giving it a list of numbers.
+- ``ListSummary.java:`` This class is instantiated by giving it a list of numbers.
 It contains several statistic methods that are useful in many scenarios. The methods
   are coded by using Java Stream in pure functional form.
   
-- **Main.java:** This class has the public main method that is executable. It instantiates
+- ``Main.java:`` This class has the public main method that is executable. It instantiates
 the ListSummary class, and calls to the statistic functions.
   
 
@@ -22,7 +22,11 @@ A Lambda function is considered pure if it meets these requirements:
 By maintaining the pure functional form, developers can consider applying parallel
 stream processing.
 
+**About branching**  
+- Main branch: It contains only program files and this Readme file.
+- Master branch: It contains the IntelliJ IDEA configuration files.
 
+**About JDK version**  
 
-
-
+**Java 9** or above is required due to the use of method ``ifPresentOrElse(DoubleConsumer action,
+Runnable emptyAction)``.
