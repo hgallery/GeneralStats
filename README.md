@@ -15,7 +15,7 @@ the ```ListSummary``` class, and calls to the statistic methods.
 **About Functional Programming:**
 
 It is aimed at having Lambda functions only in pure functional form.
-A Lambda function is considered pure if it meets these requirements:
+A function is considered pure if it meets these requirements:
 
 - The return value of the function depends only on the input parameters passed to the function.
 - The execution of the function brings no side effects. (Search for this topic on the Internet if further information is required.)
