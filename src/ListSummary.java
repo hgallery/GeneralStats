@@ -30,8 +30,9 @@ public class ListSummary {
         Function<List<Double>, OptionalDouble> geometricMean = list -> {
             if (list.isEmpty() || list.contains(null))
                 return OptionalDouble.empty();
-            double multiplier = list.stream().reduce(1d, (a, b) -> (a * (1d + b / 100d)));
-            return OptionalDouble.of((Math.pow(multiplier, 1d / list.size()) - 1d) * 100d);
+            //double multiplier = list.stream().reduce(1d, (a, b) -> (a * (1d + b / 100d)));
+            double multiplier = list.stream().reduce(1d, (i, r) -> i * (1d + r / 100d), (a, b) -> a * b);
+            return OptionalDouble.of((    Math.pow(multiplier, 1d / list.size())   -   1d) * 100d);
         };
         return geometricMean.apply(doubleList);
     }
