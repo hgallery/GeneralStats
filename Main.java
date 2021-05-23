@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,6 +9,7 @@ public class Main {
     public static void main (String... args) {
 
         List<Double> doubleList;
+
         doubleList = Arrays.asList(5d, 6d, 1d, 2d, 3d, 4d, 7d);
         //doubleList = Arrays.asList(5d, 6d, 1d, 2d, 3d, null, 7d);
         //doubleList = Collections.emptyList();
