@@ -3,8 +3,10 @@ import java.util.OptionalDouble;
 import java.util.function.Function;
 import java.util.stream.DoubleStream;
 
-public class ListSummary {
+class ListSummary {
 
+    final boolean TYPE_POPULATION = true;
+    final boolean TYPE_SAMPLE = false;
     private final List<Double> doubleList;
 
     ListSummary(List<Double> doubleList) {
@@ -25,7 +27,7 @@ public class ListSummary {
         if (list.isEmpty() || list.contains(null))
             return OptionalDouble.empty();
         double multiplier = list.stream().reduce(1d, (i, r) -> i * (1d + r / 100d), (a, b) -> a * b);
-        return OptionalDouble.of((    Math.pow(multiplier, 1d / list.size())   -   1d) * 100d);
+        return OptionalDouble.of((Math.pow(multiplier, 1d / list.size()) - 1d) * 100d);
     };
 
     Function<List<Double>, OptionalDouble> median = list -> {
@@ -83,5 +85,39 @@ public class ListSummary {
     OptionalDouble findSum() {
         return sum.apply(doubleList);
     }
+
+
+    OptionalDouble findVariance(boolean type) {
+        if (doubleList.isEmpty() || doubleList.contains(null))
+            return OptionalDouble.empty();
+
+        long varianceDenominator = type == TYPE_POPULATION ? doubleList.size() : doubleList.size() - 1;
+
+        if (varianceDenominator <= 0)
+            return OptionalDouble.empty();
+
+        OptionalDouble optionalMean = arithmeticMean.apply(doubleList);
+
+        if (optionalMean.isEmpty())
+            return OptionalDouble.empty();
+
+        double varianceNumerator = doubleList.stream()
+                .mapToDouble(x -> x - optionalMean.getAsDouble())
+                .map(x -> Math.pow(x, 2))
+                .sum();
+
+        return OptionalDouble.of(varianceNumerator / varianceDenominator);
+    }
+
+
+    OptionalDouble findStandardDeviation(boolean type) {
+
+        OptionalDouble optionalVariance = findVariance(type);
+
+        return optionalVariance.isPresent() ?
+                OptionalDouble.of(Math.pow(optionalVariance.getAsDouble(), 0.5))
+                : OptionalDouble.empty();
+    }
+
 
 }
