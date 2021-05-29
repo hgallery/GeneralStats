@@ -4,12 +4,10 @@ General statistics utilities by using Java Stream
 **This repository contains these files:**
 
 - ``ListSummary.java:`` This class is instantiated by giving it a list of numbers.
-It contains several statistic methods that are useful in many scenarios. The Lambda 
-  function in each method uses Java Stream and brings no side effects.  
-
+It contains several statistic methods that are useful in many scenarios. 
   
 - ``Main.java:`` This class has the public ```main``` method that is executable. It instantiates
-the ```ListSummary``` class, and calls to the statistic methods.
+the ```ListSummary``` class, and calls to the statistics methods.
   
 
 **About Functional Programming:**
@@ -25,7 +23,7 @@ stream processing.
 
 **About branching**  
 - Main branch: contains only the program files and this Readme file.
-- Master branch: also contains the IntelliJ IDEA configuration files but not this Readme file.
+- Master branch: also contains the IntelliJ IDEA configuration files.
 
 **About JDK version**  
 
