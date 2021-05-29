@@ -25,7 +25,7 @@ stream processing.
 - Main branch: contains only the program files and this Readme file.
 - Master branch: also contains the IntelliJ IDEA configuration files.
 
-**About JDK version**  
+**About JDK version**
 
 **Java 9** or above is required due to the use of method ``ifPresentOrElse(DoubleConsumer action,
 Runnable emptyAction)``.
